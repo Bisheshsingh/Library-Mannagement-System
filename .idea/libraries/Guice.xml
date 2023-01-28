@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Guice">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/LMS with Guice/Guice/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LMS with Guice/Guice/javax.inject-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LMS with Guice/Guice/j2objc-annotations-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LMS with Guice/Guice/guice-5.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LMS with Guice/Guice/error_prone_annotations-2.3.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LMS with Guice/Guice/guava-30.1-jre.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LMS with Guice/Guice/jsr305-3.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LMS with Guice/Guice/checker-qual-3.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LMS with Guice/Guice/aopalliance-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LMS with Guice/Guice/failureaccess-1.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
