@@ -1,28 +1,26 @@
 package LOG.DB;
 
-import LOG.USER.User;
-import LOG.UserInfo;
+import LOG.USERLOGININFO.UserLoginInfo;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginCustomData implements DBLogin{
-    private List<UserInfo> userinfos;
+public class LoginCustomData implements DBLogin {
+    private List<UserLoginInfo> userinfos;
 
     public LoginCustomData(){
-        userinfos=new ArrayList<UserInfo>();
+        this.userinfos=new ArrayList<UserLoginInfo>();
     }
 
     @Override
-    public List<UserInfo> LoadData() {
+    public List<UserLoginInfo> LoadData() {
         return this.userinfos;
     }
-
     @Override
     @Inject
-    public void update(@Named("UserinfoDB") List<UserInfo> userinfos) {
+    public void update(@Named("UserinfoDB") List<UserLoginInfo> userinfos) {
         this.userinfos=userinfos;
     }
 }

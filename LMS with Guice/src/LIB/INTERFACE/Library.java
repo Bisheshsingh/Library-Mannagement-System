@@ -1,4 +1,4 @@
-package LIB;
+package LIB.INTERFACE;
 
 import LIB.BOOK.Book;
 import LIB.ORDER.Order;

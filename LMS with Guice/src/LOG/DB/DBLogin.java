@@ -1,11 +1,10 @@
 package LOG.DB;
-import LOG.USER.User;
-import LOG.UserInfo;
+import LOG.USERLOGININFO.UserLoginInfo;
 
 import java.util.List;
 
 public interface DBLogin {
-    List<UserInfo> LoadData();
+    List<UserLoginInfo> LoadData();
 
-    void update(List<UserInfo> userinfos);
+    void update(List<UserLoginInfo> userinfos);
 }

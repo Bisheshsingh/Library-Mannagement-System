@@ -1,11 +1,8 @@
 package LOG.AUTH;
 
-import API.APIFactoryClass;
-import LIB.DB.Users.DBUsers;
+import API.GuiceConfig;
 import LOG.DB.DBLogin;
-import LOG.DB.LoginCustomData;
-import LOG.USER.User;
-import LOG.UserInfo;
+import LOG.USERLOGININFO.UserLoginInfo;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,18 +10,19 @@ import java.util.stream.Collectors;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-public class Login implements Authentication{
+public class LoginCheck implements Authentication{
     private DBLogin logindata;
 
-    public Login(){
-        Injector injector= Guice.createInjector(new APIFactoryClass());
-        this.logindata=injector.getInstance(DBLogin.class);//new LoginCustomData();
+    public LoginCheck(){
+        Injector injector= Guice.createInjector(new GuiceConfig());
+        this.logindata=injector.getInstance(DBLogin.class);;
     }
 
     private boolean Check_User(int id,String password){
-        List<UserInfo> users=logindata.LoadData().stream()
+        List<UserLoginInfo> users=logindata.LoadData().stream()
                 .filter(user->user.getID()==id)
                 .collect(Collectors.toList());
+
 
         if(users.isEmpty() || !users.get(0).getPassword().equals(password)){
             return false;
@@ -34,7 +32,8 @@ public class Login implements Authentication{
     }
 
     @Override
-    public boolean Verify(UserInfo user) {
+    public boolean Verify(Object u) {
+        UserLoginInfo user=((UserLoginInfo) u);
         return Check_User(user.getID(), user.getPassword());
     }
 }

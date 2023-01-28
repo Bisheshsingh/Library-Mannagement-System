@@ -1,37 +1,40 @@
 package LOG.AUTH;
 
-import API.APIFactoryClass;
+import API.GuiceConfig;
 import LOG.DB.LoginCustomData;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import LOG.DB.DBLogin;
-import LOG.UserInfo;
+import LOG.USERLOGININFO.UserLoginInfo;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Register implements Authentication{
+public class RegisterCheck implements Authentication{
     private DBLogin logdata;
 
-    public Register(){
-        Injector injector= Guice.createInjector(new APIFactoryClass());
-        this.logdata=injector.getInstance(DBLogin.class);//new LoginCustomData();
+    public RegisterCheck(){
+        Injector injector= Guice.createInjector(new GuiceConfig());
+        this.logdata=injector.getInstance(DBLogin.class);
     }
     public boolean Check_User(int id){
-        List<UserInfo> users=logdata.LoadData().stream()
+        List<UserLoginInfo> users=logdata.LoadData().stream()
                 .filter(user->user.getID()==id)
                 .collect(Collectors.toList());
 
         return users.isEmpty();
     }
 
-    private void Add_User(UserInfo userInfo){
-        List<UserInfo> userinfos=logdata.LoadData();
+    public void Add_User(UserLoginInfo userInfo){
+        List<UserLoginInfo> userinfos=logdata.LoadData();
+
         userinfos.add(userInfo);
         logdata.update(userinfos);
     }
     @Override
-    public boolean Verify(UserInfo user) {
+    public boolean Verify(Object u) {
+        UserLoginInfo user=((UserLoginInfo) u);
+
         boolean res=Check_User(user.getID());
 
         if(res==true){

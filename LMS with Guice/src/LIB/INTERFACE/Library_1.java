@@ -1,6 +1,5 @@
-package LIB;
+package LIB.INTERFACE;
 
-import API.APIFactoryClass;
 import LIB.BOOK.Book;
 import LIB.DB.Books.DBBooks;
 import LIB.DB.Orders.DBOrders;
@@ -10,24 +9,27 @@ import LIB.ORDER.RequestBook;
 import LIB.ORDER.RequestReturnBook;
 import LOG.USER.Borrow;
 import LOG.USER.User;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import java.util.List;
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
-public class Library_1 implements Library{
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Library_1 implements Library {
     private DBBooks booksdb;
     private DBUsers usersdb;
     private DBOrders ordersdb;
     private List<Book> books;
     private List<User> users;
     private List<Order> orders;
+    @Inject
+    private Library_1(@Named("CUSTOMBOOKDB") DBBooks dbBooks,
+                     @Named("CUSTOMUSERDB") DBUsers dbUsers,
+                     @Named("CUSTOMORDERDB") DBOrders dbOrders){
 
-    public Library_1(){
-        Injector injector= Guice.createInjector(new APIFactoryClass());
-
-        this.booksdb=injector.getInstance(DBBooks.class);//new BookCustomData();
-        this.ordersdb=injector.getInstance(DBOrders.class);//new OrderCustomData();
-        this.usersdb=injector.getInstance(DBUsers.class);//new UserCustomData();
+        this.booksdb=dbBooks;
+        this.ordersdb= dbOrders;
+        this.usersdb= dbUsers;
 
         this.orders=this.ordersdb.LoadData();
         this.users=this.usersdb.LoadData();
@@ -48,7 +50,13 @@ public class Library_1 implements Library{
 
     @Override
     public void removeBook(Book book) {
-        this.books.remove(book);
+        Book mybook=this.books
+                .stream()
+                .filter(b->b.getID()==book.getID())
+                .collect(Collectors.toList())
+                .get(0);
+
+        this.books.remove(mybook);
     }
 
     @Override
@@ -73,7 +81,11 @@ public class Library_1 implements Library{
 
     @Override
     public void removeOrder(Order order) {
-       orders.remove(order);
+       orders.remove(orders.
+               stream()
+               .filter(order1 -> order1.getBookID()==order.getBookID())
+               .collect(Collectors.toList())
+               .get(0));
     }
 
     @Override

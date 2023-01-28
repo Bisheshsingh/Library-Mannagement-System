@@ -1,8 +1,7 @@
 package LOG.AUTH;
 
-import LOG.USER.User;
-import LOG.UserInfo;
+import LOG.USERLOGININFO.UserLoginInfo;
 
 public interface Authentication {
-    public boolean Verify(UserInfo user);
+    public boolean Verify(Object user);
 }
