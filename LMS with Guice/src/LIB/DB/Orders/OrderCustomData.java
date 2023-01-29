@@ -1,11 +1,8 @@
 package LIB.DB.Orders;
 
 import LIB.ORDER.Order;
-import LIB.ORDER.RequestBook;
-import LIB.ORDER.RequestReturnBook;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class OrderCustomData implements DBOrders{
@@ -14,8 +11,13 @@ public class OrderCustomData implements DBOrders{
         this.orders= new ArrayList<Order>();
     }
     @Override
-    public void update(List<Order> orders) {
-        this.orders=orders;
+    public void add(List<Order> orders) {
+        orders.forEach(this.orders::add);
+    }
+
+    @Override
+    public void delete(List<Order> orders) {
+        orders.forEach(this.orders::remove);
     }
 
     @Override

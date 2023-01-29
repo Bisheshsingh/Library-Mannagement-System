@@ -1,10 +1,5 @@
 package DBM;
 
-import LIB.BOOK.Book;
-import LOG.USER.Student;
-import LOG.USER.User;
-import LOG.USERLOGININFO.UserLoginInfo;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +30,7 @@ public class H2DB {
          return instance;
     }
 
-    public static void add(List<String> args){
+    public static H2DB add(List<String> args){
         Optional<String> s=args.stream().reduce((a, b)->a+"','"+b);
         String values="'" + s.get() + "'";
 
@@ -47,7 +42,7 @@ public class H2DB {
             throw new RuntimeException(e);
         }
 
-        close();
+        return instance;
     }
 
     public static List<List<String>> access(List<String> args){
@@ -86,5 +81,16 @@ public class H2DB {
         return true;
     }
 
+    public static H2DB delete(String idname,String id){
 
+        String sql=String.format("delete from %s where %s = %s",tablename,idname,id);
+
+        try {
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return instance;
+    }
 }

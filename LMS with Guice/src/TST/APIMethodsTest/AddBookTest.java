@@ -2,6 +2,7 @@ package TST.APIMethodsTest;
 
 import API.GuiceConfig;
 import API.LMSAPI;
+import DBM.H2DB;
 import LIB.BOOK.Book;
 import LIB.BOOK.Novel;
 import LOG.USER.Admin;

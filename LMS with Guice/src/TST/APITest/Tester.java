@@ -1,5 +1,7 @@
 package TST.APITest;
 
+import org.junit.Test;
+
 public interface Tester {
     public void TestLogin();
     public void TestRegister();

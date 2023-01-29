@@ -7,11 +7,11 @@ import LIB.BOOK.Novel;
 import LOG.USER.Admin;
 import LOG.USER.Student;
 import com.google.inject.Guice;
-import com.google.inject.Injector;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class UpdateBookTest implements Test{
     private LMSAPI api;
@@ -43,7 +43,7 @@ public class UpdateBookTest implements Test{
     private void Check3(){
         System.out.println("\nUpdateBookTest() Check 3: Book updated or not Initializing...");
         Book originalbook=api.Search_Book_By_ID(124).get(0);
-        Book modifybook = new Novel(originalbook.getID(), "UT", originalbook.getAuthors());
+        Book modifybook = new Novel(originalbook.getID(), "UT", originalbook.getAuthors(),originalbook.isAvailable());
 
         try {
             api.Update_Book(new Admin(1234, "Admin"), modifybook);

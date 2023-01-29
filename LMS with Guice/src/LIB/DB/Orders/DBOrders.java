@@ -1,12 +1,12 @@
 package LIB.DB.Orders;
 
 import LIB.ORDER.Order;
-import LOG.USER.User;
 
 import java.util.List;
 
 public interface DBOrders {
-    void update(List<Order> orders);
+    void add(List<Order> Orders);
+    void delete(List<Order> orders);
 
     List<Order> LoadData();
 }

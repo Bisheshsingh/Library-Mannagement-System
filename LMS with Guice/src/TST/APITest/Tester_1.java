@@ -2,18 +2,10 @@ package TST.APITest;
 
 import API.GuiceConfig;
 import API.LMSAPI;
-import API.MSG;
-import LIB.BOOK.Book;
-import LIB.BOOK.Novel;
-import LOG.USER.Admin;
-import LOG.USER.Student;
-import LOG.USER.User;
+import TST.APIMethodsTest.*;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.junit.Test;
-import TST.APIMethodsTest.*;
-
-import java.util.Arrays;
 
 public class Tester_1 implements Tester {
     private LMSAPI api;

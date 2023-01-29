@@ -5,6 +5,7 @@ import LIB.BOOK.Book;
 import LIB.INTERFACE.Library;
 import LIB.ORDER.Order;
 import LOG.AUTH.Authentication;
+import LIB.BORROW.Borrow;
 import LOG.USER.Student;
 import LOG.USER.User;
 import LOG.USERLOGININFO.UserLoginInfo;
@@ -146,12 +147,18 @@ public class LMSAPI_1 implements LMSAPI{
     }
     @Override
     public boolean Accept_Order(User admin,Order order) throws Exception {
+        if(admin==null || order==null){
+            throw MSG.InvaliParam();
+        }
+
         if(!admincheck.Verify(admin)){
             throw MSG.IllegalAccess();
         }
 
         boolean status=true;
         library.ExecuteOrder(order,findUserByID(order.getUserID()),Search_Book_By_ID(order.getBookID()).get(0));
+        library.removeOrder(order);
+        library.update();
         return status;
     }
     @Override
@@ -163,6 +170,7 @@ public class LMSAPI_1 implements LMSAPI{
         boolean status=true;
 
         library.removeOrder(order);
+        library.update();
 
         return status;
     }
@@ -186,7 +194,7 @@ public class LMSAPI_1 implements LMSAPI{
             throw MSG.IllegalAccess();
         }
 
-        if(books.isEmpty()){
+        if(books.isEmpty() || !books.get(0).isAvailable()){
             throw MSG.ItemDoesNotExist();
         }
 
@@ -196,5 +204,21 @@ public class LMSAPI_1 implements LMSAPI{
         library.update();
 
         return status;
+    }
+    @Override
+    public List<Borrow> View_Borrow(User admin) {
+        return library.get_Borrows();
+    }
+    @Override
+    public List<Borrow> SearchBorrowedWithBookID(User admin,int id) {
+        return View_Borrow(admin).stream()
+                .filter(b -> b.getBookID()==id)
+                .collect(Collectors.toList());
+    }
+    @Override
+    public List<Borrow> SearchBorrowedWithUserID(User admin,int id) {
+        return View_Borrow(admin).stream()
+                .filter(b -> b.getUserID()==id)
+                .collect(Collectors.toList());
     }
 }

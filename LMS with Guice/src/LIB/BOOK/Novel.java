@@ -1,6 +1,5 @@
 package LIB.BOOK;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Novel implements Book{
@@ -16,10 +15,10 @@ public class Novel implements Book{
         this.available=true;
     }
 
-    public Novel(int id, String name, String[] authors, boolean parseBoolean) {
+    public Novel(int id, String name, List<String> authors, boolean parseBoolean) {
         this.id = id;
         this.name = name;
-        this.authors = Arrays.asList(authors);
+        this.authors = authors;
         this.available=parseBoolean;
     }
 

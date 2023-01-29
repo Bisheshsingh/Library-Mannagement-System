@@ -1,10 +1,10 @@
 package LIB.INTERFACE;
 
 import LIB.BOOK.Book;
+import LIB.BORROW.Borrow;
 import LIB.ORDER.Order;
 import LOG.USER.User;
 
-import java.util.Arrays;
 import java.util.List;
 
 public interface Library {
@@ -26,4 +26,9 @@ public interface Library {
     void addUser(User user);
 
     void ExecuteOrder(Order order,User user,Book book);
+
+    List<Borrow> get_Borrows();
+
+    void addBorrow(Borrow borrow);
+    void removeBorrow(int bookID);
 }

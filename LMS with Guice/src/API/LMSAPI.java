@@ -1,19 +1,12 @@
 package API;
 
-import FIN.Fine;
 import LIB.BOOK.Book;
-import LIB.INTERFACE.Library;
 import LIB.ORDER.Order;
-import LOG.AUTH.Authentication;
-import LOG.USER.Student;
+import LIB.BORROW.Borrow;
 import LOG.USER.User;
-import LOG.USERLOGININFO.UserLoginInfo;
-import com.google.inject.Inject;
-import com.google.inject.name.Named;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public interface LMSAPI {
     public User Login(int id,String password) throws Exception;
@@ -30,4 +23,7 @@ public interface LMSAPI {
     public boolean Accept_Order(User admin,Order order) throws Exception;
     public boolean Reject_Order(User admin,Order order) throws Exception;
     public boolean Place_Order(User user,Order order) throws Throwable;
+    public List<Borrow> View_Borrow(User admin);
+    public List<Borrow> SearchBorrowedWithBookID(User admin, int id);
+    public List<Borrow> SearchBorrowedWithUserID(User admin,int id);
 }

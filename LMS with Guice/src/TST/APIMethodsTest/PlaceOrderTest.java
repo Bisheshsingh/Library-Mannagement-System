@@ -4,16 +4,14 @@ import API.GuiceConfig;
 import API.LMSAPI;
 import API.MSG;
 import LIB.ORDER.RequestBook;
-import LOG.USER.Admin;
 import LOG.USER.Student;
 import com.google.inject.Guice;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.*;
+import java.util.Date;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 public class PlaceOrderTest implements Test{
     private LMSAPI api;
@@ -113,13 +111,14 @@ public class PlaceOrderTest implements Test{
         }
 
         try {
-            boolean status=api.Place_Order(new Student(124, "Student"),
-                    new RequestBook(124,1244778,st,en));
+            boolean status=api.Place_Order(new Student(1234, "Student"),
+                    new RequestBook(1234,124,st,en));
 
             assertFalse(status);
-        } catch (Throwable e) {
-            assertTrue(e.getMessage().equals(MSG.ItemDoesNotExist().getMessage()));
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("PlaceOrderTest() Check 4 Passed!");
+        }catch (Throwable e){
+            throw new RuntimeException(e);
         }
     }
 

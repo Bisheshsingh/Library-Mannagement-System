@@ -35,7 +35,7 @@ public class LoginH2Data implements DBLogin{
                         .add(Arrays.asList(
                                 String.valueOf(u.getID()),
                                 u.getPassword()
-                        ));
+                        )).close();
             }catch (Exception e){
 
             }

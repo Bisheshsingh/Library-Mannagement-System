@@ -4,8 +4,6 @@ import DBM.H2DB;
 import LIB.ORDER.Order;
 import LIB.ORDER.RequestBook;
 import LIB.ORDER.RequestReturnBook;
-import LOG.USER.Student;
-import LOG.USER.User;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -16,7 +14,7 @@ public class OrderH2Data implements DBOrders{
     private final String dbname = "OrderInfo";
     private final List<String> params= Arrays.asList("Type","UserID","BookID","StartDate","EndDate");
     @Override
-    public void update(List<Order> orders) {
+    public void add(List<Order> orders) {
         SimpleDateFormat ft=new SimpleDateFormat("yyyy-MM-dd");
         orders.forEach(u -> {
             try{
@@ -27,7 +25,19 @@ public class OrderH2Data implements DBOrders{
                                 String.valueOf(u.getBookID()),
                                 ft.format(u.getStartDate()),
                                 ft.format(u.getEndDate())
-                        ));
+                        )).close();
+            }catch (Exception e){
+
+            }
+        });
+    }
+
+    @Override
+    public void delete(List<Order> orders) {
+        orders.forEach(u -> {
+            try{
+                H2DB.getInstance(dbname)
+                        .delete("BookID",String.valueOf(u.getBookID())).close();
             }catch (Exception e){
 
             }
