@@ -56,7 +56,7 @@ public class Main {
 
         System.out.println("Clearing Database Passed!");
     }
-    public static void main(String[] args){
-       clear();
+    public static void main(String[] args) {
+        clear();
     }
 }

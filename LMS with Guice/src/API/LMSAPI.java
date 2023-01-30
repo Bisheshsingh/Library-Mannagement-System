@@ -26,4 +26,5 @@ public interface LMSAPI {
     public List<Borrow> View_Borrow(User admin);
     public List<Borrow> SearchBorrowedWithBookID(User admin, int id);
     public List<Borrow> SearchBorrowedWithUserID(User admin,int id);
+    public List<Borrow> View_My_Borrow(User user);
 }

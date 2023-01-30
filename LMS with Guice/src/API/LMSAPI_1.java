@@ -136,7 +136,11 @@ public class LMSAPI_1 implements LMSAPI{
     public double Calculate_Fine(List<User> users, Date date, double cost){
         double total_fine = 0.0;
         for(User user : users){
-            total_fine += latesubmissionfine.Calculate(user, date, cost);
+            List<Date> endDates=View_My_Borrow(user).stream()
+                    .map(b -> b.getEndDate())
+                    .collect(Collectors.toList());
+
+            total_fine += latesubmissionfine.Calculate(endDates, date, cost);
         }
 
         return total_fine;
@@ -208,6 +212,12 @@ public class LMSAPI_1 implements LMSAPI{
     @Override
     public List<Borrow> View_Borrow(User admin) {
         return library.get_Borrows();
+    }
+    @Override
+    public List<Borrow> View_My_Borrow(User user) {
+        return library.get_Borrows().stream()
+                .filter(b -> b.getUserID()==user.getID())
+                .collect(Collectors.toList());
     }
     @Override
     public List<Borrow> SearchBorrowedWithBookID(User admin,int id) {

@@ -1,9 +1,8 @@
 package FIN.FINE;
 
-import LIB.USER.User;
-
 import java.util.Date;
+import java.util.List;
 
 public interface Fine {
-    Double Calculate(User user, Date date, double cost);
+    double Calculate(List<Date> endDates, Date date, double cost);
 }
