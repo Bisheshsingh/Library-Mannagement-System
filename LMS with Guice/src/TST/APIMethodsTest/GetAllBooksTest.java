@@ -4,11 +4,10 @@ import API.GuiceConfig;
 import API.LMSAPI;
 import LIB.BOOK.Book;
 import LIB.BOOK.Novel;
-import LOG.USER.Admin;
+import LIB.USER.Admin;
 import com.google.inject.Guice;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.*;
 

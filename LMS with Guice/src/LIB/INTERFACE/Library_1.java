@@ -9,7 +9,7 @@ import LIB.DB.Users.DBUsers;
 import LIB.ORDER.Order;
 import LIB.ORDER.RequestBook;
 import LIB.ORDER.RequestReturnBook;
-import LOG.USER.User;
+import LIB.USER.User;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 

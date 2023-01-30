@@ -1,7 +1,7 @@
 package API;
 
-import FIN.Fine;
-import FIN.LateSubmission;
+import FIN.FINE.Fine;
+import FIN.FINE.LateSubmission;
 import LIB.DB.Books.BookH2Data;
 import LIB.DB.Books.DBBooks;
 import LIB.DB.Borrows.BorrowsH2Data;

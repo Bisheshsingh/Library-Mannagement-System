@@ -3,7 +3,7 @@ package LIB.INTERFACE;
 import LIB.BOOK.Book;
 import LIB.BORROW.Borrow;
 import LIB.ORDER.Order;
-import LOG.USER.User;
+import LIB.USER.User;
 
 import java.util.List;
 

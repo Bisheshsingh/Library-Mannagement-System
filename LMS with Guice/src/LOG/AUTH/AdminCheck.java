@@ -1,7 +1,6 @@
 package LOG.AUTH;
 
-import LOG.USER.User;
-import LOG.USERLOGININFO.UserLoginInfo;
+import LIB.USER.User;
 
 public class AdminCheck implements Authentication{
     public boolean Verify(Object u) {

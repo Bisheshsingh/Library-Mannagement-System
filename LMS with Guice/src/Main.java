@@ -31,7 +31,7 @@ public class Main {
         System.out.println("----------------------------------------------\n");
         throw new RuntimeException("Failed");
     }
-    public void clear(){
+    public static void clear(){
         System.out.println("\nClearing Database Initializing...");
 
         H2DB.getInstance("UserInfo")
@@ -56,8 +56,7 @@ public class Main {
 
         System.out.println("Clearing Database Passed!");
     }
-
     public static void main(String[] args){
-
+       clear();
     }
 }

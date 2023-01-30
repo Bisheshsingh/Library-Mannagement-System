@@ -1,6 +1,6 @@
 package LIB.DB.Users;
 
-import LOG.USER.User;
+import LIB.USER.User;
 
 import java.util.List;
 

@@ -1,12 +1,8 @@
 package LOG.DB;
 
 import DBM.H2DB;
-import LOG.USER.Student;
-import LOG.USER.User;
 import LOG.USERLOGININFO.UserLoginInfo;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

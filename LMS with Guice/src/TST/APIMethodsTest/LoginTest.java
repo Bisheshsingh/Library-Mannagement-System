@@ -3,7 +3,7 @@ package TST.APIMethodsTest;
 import API.GuiceConfig;
 import API.LMSAPI;
 import API.MSG;
-import LOG.USER.User;
+import LIB.USER.User;
 import com.google.inject.Guice;
 
 import static org.junit.Assert.*;

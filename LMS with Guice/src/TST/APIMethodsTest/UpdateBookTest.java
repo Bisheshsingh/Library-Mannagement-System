@@ -4,8 +4,8 @@ import API.GuiceConfig;
 import API.LMSAPI;
 import LIB.BOOK.Book;
 import LIB.BOOK.Novel;
-import LOG.USER.Admin;
-import LOG.USER.Student;
+import LIB.USER.Admin;
+import LIB.USER.Student;
 import com.google.inject.Guice;
 
 import java.util.Arrays;

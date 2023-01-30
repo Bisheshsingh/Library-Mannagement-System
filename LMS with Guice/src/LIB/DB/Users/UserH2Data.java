@@ -1,8 +1,8 @@
 package LIB.DB.Users;
 
 import DBM.H2DB;
-import LOG.USER.Student;
-import LOG.USER.User;
+import LIB.USER.Student;
+import LIB.USER.User;
 
 import java.util.Arrays;
 import java.util.List;

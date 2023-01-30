@@ -1,13 +1,13 @@
 package API;
 
-import FIN.Fine;
+import FIN.FINE.Fine;
 import LIB.BOOK.Book;
 import LIB.INTERFACE.Library;
 import LIB.ORDER.Order;
 import LOG.AUTH.Authentication;
 import LIB.BORROW.Borrow;
-import LOG.USER.Student;
-import LOG.USER.User;
+import LIB.USER.Student;
+import LIB.USER.User;
 import LOG.USERLOGININFO.UserLoginInfo;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
