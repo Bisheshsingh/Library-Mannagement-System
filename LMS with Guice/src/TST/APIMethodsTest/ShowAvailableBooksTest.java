@@ -1,20 +1,18 @@
 package TST.APIMethodsTest;
 
-import API.GuiceConfig;
 import API.LMSAPI;
 import LIB.BOOK.Book;
-import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.Assert.assertTrue;
 
 public class ShowAvailableBooksTest implements Test{
     private LMSAPI api;
 
-    public ShowAvailableBooksTest(){
-        this.api= Guice.createInjector(new GuiceConfig()).getInstance(LMSAPI.class);
+    public ShowAvailableBooksTest(Injector injector){
+        this.api = injector.getInstance(LMSAPI.class);
     }
 
     private void Check1(){

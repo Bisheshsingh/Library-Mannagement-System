@@ -1,7 +1,7 @@
 package TST.APIMethodsTest;
 
 import FIN.FINE.Fine;
-import FIN.FINE.LateSubmission;
+import com.google.inject.Injector;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,12 +14,12 @@ import static org.junit.Assert.assertEquals;
 public class CalculateFineTest implements Test{
     private Fine fine;
 
-    public CalculateFineTest() {
-        this.fine = new LateSubmission();
+    public CalculateFineTest(Injector injector) {
+        this.fine = injector.getInstance(Fine.class);;
     }
 
     private void Check1() {
-        System.out.println("CalculateFineTest() Check 1: Fine calculation check Initializing...");
+        System.out.println("\nCalculateFineTest() Check 1: Fine calculation check Initializing...");
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
         List<Date> endDates=null;
         Date currentDate=null;

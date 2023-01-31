@@ -146,7 +146,11 @@ public class LMSAPI_1 implements LMSAPI{
         return total_fine;
     }
     @Override
-    public List<Order> View_Order(User admin){
+    public List<Order> View_Order(User admin) throws IllegalAccessException {
+        if(!admincheck.Verify(admin)){
+            throw MSG.IllegalAccess();
+        }
+
         return library.get_Orders();
     }
     @Override
@@ -178,7 +182,6 @@ public class LMSAPI_1 implements LMSAPI{
 
         return status;
     }
-
     private User findUserByID(int userID){
         List<User> users = library.get_Users().stream()
                 .filter(user->user.getID()==userID)
@@ -210,7 +213,10 @@ public class LMSAPI_1 implements LMSAPI{
         return status;
     }
     @Override
-    public List<Borrow> View_Borrow(User admin) {
+    public List<Borrow> View_Borrow(User admin) throws IllegalAccessException {
+        if(!admincheck.Verify(admin)){
+            throw MSG.IllegalAccess();
+        }
         return library.get_Borrows();
     }
     @Override
@@ -220,13 +226,13 @@ public class LMSAPI_1 implements LMSAPI{
                 .collect(Collectors.toList());
     }
     @Override
-    public List<Borrow> SearchBorrowedWithBookID(User admin,int id) {
+    public List<Borrow> SearchBorrowedWithBookID(User admin,int id) throws IllegalAccessException {
         return View_Borrow(admin).stream()
                 .filter(b -> b.getBookID()==id)
                 .collect(Collectors.toList());
     }
     @Override
-    public List<Borrow> SearchBorrowedWithUserID(User admin,int id) {
+    public List<Borrow> SearchBorrowedWithUserID(User admin,int id) throws IllegalAccessException {
         return View_Borrow(admin).stream()
                 .filter(b -> b.getUserID()==id)
                 .collect(Collectors.toList());

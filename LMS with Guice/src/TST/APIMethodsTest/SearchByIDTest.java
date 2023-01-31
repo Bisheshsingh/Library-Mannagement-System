@@ -1,9 +1,8 @@
 package TST.APIMethodsTest;
 
-import API.GuiceConfig;
 import API.LMSAPI;
 import LIB.BOOK.Book;
-import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import java.util.List;
 
@@ -11,8 +10,8 @@ import static org.junit.Assert.assertTrue;
 
 public class SearchByIDTest implements Test{
     private LMSAPI api;
-    public SearchByIDTest(){
-        api= Guice.createInjector(new GuiceConfig()).getInstance(LMSAPI.class);
+    public SearchByIDTest(Injector injector){
+        api = injector.getInstance(LMSAPI.class);
     }
 
     private void Check1(){

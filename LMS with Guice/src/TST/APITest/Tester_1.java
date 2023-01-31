@@ -26,20 +26,20 @@ public class Tester_1 implements Tester {
 
     public Tester_1() {
         Injector injector = Guice.createInjector(new GuiceConfig());
-        loginTest=injector.getInstance(LoginTest.class);
-        registerTest=injector.getInstance(RegisterTest.class);
-        addBookTest=injector.getInstance(AddBookTest.class);
-        updateBookTest=injector.getInstance(UpdateBookTest.class);
-        getAllBooksTest=injector.getInstance(GetAllBooksTest.class);
-        showAvailableBooksTest=injector.getInstance(ShowAvailableBooksTest.class);
-        searchByIDTest=injector.getInstance(SearchByIDTest.class);
-        searchByAuthorsTest=injector.getInstance(SearchByAuthorsTest.class);
-        searchByNameTest=injector.getInstance(SearchByNameTest.class);
-        calculateFineTest=injector.getInstance(CalculateFineTest.class);
-        viewOrderTest=injector.getInstance(ViewOrderTest.class);
-        acceptOrderTest=injector.getInstance(AcceptOrderTest.class);
-        rejectOrderTest=injector.getInstance(RejectOrderTest.class);
-        placeOrderTest=injector.getInstance(PlaceOrderTest.class);
+        loginTest=new LoginTest(injector);
+        registerTest=new RegisterTest(injector);
+        addBookTest=new AddBookTest(injector);
+        updateBookTest=new UpdateBookTest(injector);
+        getAllBooksTest=new GetAllBooksTest(injector);
+        showAvailableBooksTest=new ShowAvailableBooksTest(injector);
+        searchByIDTest=new SearchByIDTest(injector);
+        searchByAuthorsTest=new SearchByAuthorsTest(injector);
+        searchByNameTest=new SearchByNameTest(injector);
+        calculateFineTest=new CalculateFineTest(injector);
+        viewOrderTest=new ViewOrderTest(injector);
+        acceptOrderTest=new AcceptOrderTest(injector);
+        rejectOrderTest=new RejectOrderTest(injector);
+        placeOrderTest=new PlaceOrderTest(injector);
     }
 
     @Override

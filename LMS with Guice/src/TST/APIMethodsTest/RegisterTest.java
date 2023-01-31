@@ -1,17 +1,15 @@
 package TST.APIMethodsTest;
 
-import API.GuiceConfig;
 import API.LMSAPI;
 import API.MSG;
-import LOG.AUTH.RegisterCheck;
-import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import static org.junit.Assert.assertTrue;
 
 public class RegisterTest implements Test{
     private LMSAPI api;
-    public RegisterTest(){
-        api= Guice.createInjector(new GuiceConfig()).getInstance(LMSAPI.class);
+    public RegisterTest(Injector injector){
+        api = injector.getInstance(LMSAPI.class);
     }
 
     private void Check1(){

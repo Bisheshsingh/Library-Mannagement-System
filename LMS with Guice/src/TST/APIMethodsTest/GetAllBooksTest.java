@@ -1,20 +1,19 @@
 package TST.APIMethodsTest;
 
-import API.GuiceConfig;
 import API.LMSAPI;
 import LIB.BOOK.Book;
 import LIB.BOOK.Novel;
 import LIB.USER.Admin;
-import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
 
 public class GetAllBooksTest implements Test{
     private LMSAPI api;
-    public GetAllBooksTest(){
-        api = Guice.createInjector(new GuiceConfig()).getInstance(LMSAPI.class);
+    public GetAllBooksTest(Injector injector){
+        api = injector.getInstance(LMSAPI.class);
     }
 
     private void Check1(){

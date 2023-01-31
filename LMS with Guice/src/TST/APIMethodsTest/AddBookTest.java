@@ -1,12 +1,11 @@
 package TST.APIMethodsTest;
 
-import API.GuiceConfig;
 import API.LMSAPI;
 import LIB.BOOK.Book;
 import LIB.BOOK.Novel;
 import LIB.USER.Admin;
 import LIB.USER.Student;
-import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import java.util.Arrays;
 
@@ -14,8 +13,8 @@ import static org.junit.Assert.assertFalse;
 
 public class AddBookTest implements Test{
     private LMSAPI api;
-    public AddBookTest(){
-        api= Guice.createInjector(new GuiceConfig()).getInstance(LMSAPI.class);
+    public AddBookTest(Injector injector){
+        api = injector.getInstance(LMSAPI.class);
     }
 
     private void Check1(){

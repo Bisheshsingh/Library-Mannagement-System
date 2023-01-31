@@ -1,18 +1,16 @@
 package TST.APIMethodsTest;
 
-import API.GuiceConfig;
 import API.LMSAPI;
 import LIB.BOOK.Book;
-import com.google.inject.Guice;
+import com.google.inject.Injector;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class SearchByAuthorsTest implements Test{
     private LMSAPI api;
-    public SearchByAuthorsTest(){
-        api= Guice.createInjector(new GuiceConfig()).getInstance(LMSAPI.class);
+    public SearchByAuthorsTest(Injector injector){
+        api = injector.getInstance(LMSAPI.class);
     }
 
     private void Check1(){

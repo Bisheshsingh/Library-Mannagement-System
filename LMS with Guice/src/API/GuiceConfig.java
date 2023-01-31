@@ -36,6 +36,7 @@ public class GuiceConfig extends AbstractModule {
     protected void configure() {
         super.configure();
         bind(LMSAPI.class).to(LMSAPI_1.class);
+        bind(Fine.class).to(LateSubmission.class);
         bind(Library.class).annotatedWith(Names.named(LIBRARYTOKEN)).to(Library_1.class);
         bind(Fine.class).annotatedWith(Names.named(FINETOKEN)).to(LateSubmission.class);
         bind(Authentication.class).annotatedWith(Names.named(LOGINCHECK)).to(LoginCheck.class);

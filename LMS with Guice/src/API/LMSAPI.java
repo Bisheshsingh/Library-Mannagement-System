@@ -19,12 +19,12 @@ public interface LMSAPI {
     public List<Book> Search_Book_By_Name(String name);
     public List<Book> Search_Book_By_Auhors(List<String> authors);
     public double Calculate_Fine(List<User> users, Date date,double cost);
-    public List<Order> View_Order(User admin);
+    public List<Order> View_Order(User admin) throws IllegalAccessException;
     public boolean Accept_Order(User admin,Order order) throws Exception;
     public boolean Reject_Order(User admin,Order order) throws Exception;
     public boolean Place_Order(User user,Order order) throws Throwable;
-    public List<Borrow> View_Borrow(User admin);
-    public List<Borrow> SearchBorrowedWithBookID(User admin, int id);
-    public List<Borrow> SearchBorrowedWithUserID(User admin,int id);
+    public List<Borrow> View_Borrow(User admin) throws IllegalAccessException;
+    public List<Borrow> SearchBorrowedWithBookID(User admin, int id) throws IllegalAccessException;
+    public List<Borrow> SearchBorrowedWithUserID(User admin,int id) throws IllegalAccessException;
     public List<Borrow> View_My_Borrow(User user);
 }

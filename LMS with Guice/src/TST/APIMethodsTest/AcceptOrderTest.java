@@ -1,13 +1,12 @@
 package TST.APIMethodsTest;
 
-import API.GuiceConfig;
 import API.LMSAPI;
 import LIB.ORDER.Order;
 import LIB.ORDER.RequestBook;
 import LIB.USER.Admin;
 import LIB.USER.Student;
 import LIB.USER.User;
-import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import java.security.InvalidParameterException;
 import java.text.SimpleDateFormat;
@@ -17,12 +16,12 @@ import static org.junit.Assert.assertTrue;
 
 public class AcceptOrderTest implements Test{
     private LMSAPI api;
-    public AcceptOrderTest(){
-        api= Guice.createInjector(new GuiceConfig()).getInstance(LMSAPI.class);
+    public AcceptOrderTest(Injector injector){
+        api = injector.getInstance(LMSAPI.class);
     }
 
     public void Check1(){
-        System.out.println("AcceptOrderTest() Check 1: Invalid Params Initializing...");
+        System.out.println("\nAcceptOrderTest() Check 1: Invalid Params Initializing...");
 
         try{
             api.Accept_Order(null,null);
@@ -35,7 +34,7 @@ public class AcceptOrderTest implements Test{
     }
 
     public void Check2(){
-        System.out.println("AcceptOrderTest() Check 2: Admin Check Initializing...");
+        System.out.println("\nAcceptOrderTest() Check 2: Admin Check Initializing...");
         SimpleDateFormat ft=new SimpleDateFormat("yyyy-MM-dd");
         try{
             api.Accept_Order(new Admin(123356,"Admin"),
@@ -51,7 +50,7 @@ public class AcceptOrderTest implements Test{
     }
 
     public void Check3(){
-        System.out.println("AcceptOrderTest() Check 3: Accepts Successfully Initializing...");
+        System.out.println("\nAcceptOrderTest() Check 3: Accepts Successfully Initializing...");
         SimpleDateFormat ft=new SimpleDateFormat("yyyy-MM-dd");
         try{
             User user=new Admin(1234,"Admin");

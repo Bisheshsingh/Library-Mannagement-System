@@ -1,17 +1,16 @@
 package TST.APIMethodsTest;
 
-import API.GuiceConfig;
 import API.LMSAPI;
 import API.MSG;
 import LIB.USER.User;
-import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import static org.junit.Assert.*;
 
 public class LoginTest implements Test{
     private LMSAPI api;
-    public LoginTest(){
-        api = Guice.createInjector(new GuiceConfig()).getInstance(LMSAPI.class);
+    public LoginTest(Injector injector){
+        api = injector.getInstance(LMSAPI.class);
     }
     private void Check1(){
         System.out.println("\nLoginTest() Check 1: Wrong ID/Password Initializing...");

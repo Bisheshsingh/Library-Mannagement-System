@@ -1,11 +1,10 @@
 package TST.APIMethodsTest;
 
-import API.GuiceConfig;
 import API.LMSAPI;
 import API.MSG;
 import LIB.ORDER.RequestBook;
 import LIB.USER.Student;
-import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,8 +15,8 @@ import static org.junit.Assert.assertFalse;
 public class PlaceOrderTest implements Test{
     private LMSAPI api;
     private SimpleDateFormat ft;
-    public PlaceOrderTest() {
-        this.api = Guice.createInjector(new GuiceConfig()).getInstance(LMSAPI.class);
+    public PlaceOrderTest(Injector injector) {
+        this.api = injector.getInstance(LMSAPI.class);
         ft=new SimpleDateFormat ("yyyy-MM-dd");
     }
 

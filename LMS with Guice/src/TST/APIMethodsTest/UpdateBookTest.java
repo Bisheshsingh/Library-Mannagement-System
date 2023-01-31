@@ -1,12 +1,11 @@
 package TST.APIMethodsTest;
 
-import API.GuiceConfig;
 import API.LMSAPI;
 import LIB.BOOK.Book;
 import LIB.BOOK.Novel;
 import LIB.USER.Admin;
 import LIB.USER.Student;
-import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import java.util.Arrays;
 
@@ -16,8 +15,8 @@ import static org.junit.Assert.assertTrue;
 public class UpdateBookTest implements Test{
     private LMSAPI api;
 
-    public UpdateBookTest(){
-        this.api= Guice.createInjector(new GuiceConfig()).getInstance(LMSAPI.class);
+    public UpdateBookTest(Injector injector){
+        this.api = injector.getInstance(LMSAPI.class);
     }
     private void Check1(){
         System.out.println("\nUpdateBookTest() Check 1: Admin check Initializing...");
